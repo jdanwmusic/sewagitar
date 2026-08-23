@@ -1,2 +1,0 @@
-# sewagitar
-website penyewaan gitar 

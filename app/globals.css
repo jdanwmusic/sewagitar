@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 5, 10, 25;
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  color: rgb(var(--foreground-rgb));
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-slate-900 font-bold px-6 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg;
+}
+
+.btn-secondary {
+  @apply border-2 border-slate-600 hover:border-brand-500 text-white px-6 py-3 rounded-lg transition-all;
+}
+
+.btn-whatsapp {
+  @apply bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg;
+}
