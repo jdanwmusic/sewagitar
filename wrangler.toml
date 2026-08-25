@@ -1,20 +1,21 @@
 # ============================================================
-# SEWAGITAR.COM - Cloudflare Pages configuration (reference)
+# SEWAGITAR.COM - Cloudflare deployment configuration
 # ============================================================
 #
-# DEPLOYMENT METHOD: Cloudflare Pages - Direct Upload
-# This project is a PURE STATIC SITE (Next.js output: export).
-# Cloudflare Pages serves the static files in /out directly.
+# PROJECT: Static Next.js site (output: export)
+# Build output directory: /out (contains pure static HTML/CSS/JS)
+# Deployment: Cloudflare Workers static assets (no Worker functions)
 #
-# Wrangler Pages does NOT need a wrangler.toml file for direct
-# upload — everything is passed via CLI flags:
+# `npx wrangler deploy` reads this file. Because the project is a
+# PURE STATIC SITE, we use the `assets` directive to point at the
+# build output directory. No `main` Worker entry-point is needed.
 #
-#   wrangler pages deploy out --project-name sewagitar
-#
-# The wrangler.toml below is kept minimal/valid for reference.
-# Project name: sewagitar
-# Build output: /out
+# not_found_handling = "single-page-application" serves index.html
+# as the fallback for unknown routes (SPA-style).
 # ============================================================
 
 name = "sewagitar"
 compatibility_date = "2024-11-01"
+
+# Static assets served directly from the Next.js export build.
+assets = { directory = "./out", not_found_handling = "single-page-application" }
