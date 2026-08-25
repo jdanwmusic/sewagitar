@@ -15,8 +15,12 @@ export default function ProductYamahaFG830() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Product Image */}
           <div>
-            <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl aspect-[4/3] flex items-center justify-center">
-              <div className="text-9xl opacity-20">🎸</div>
+            <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
+              <img
+                src="/images/guitars/yamaha-fg830.jpg"
+                alt="Gitar akustik Yamaha FG830"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 

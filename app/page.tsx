@@ -63,8 +63,13 @@ export default function Home() {
             {[1, 2, 3].map((i) => (
               <a href={`/gitar/yamaha-fg830`} key={i} className="group">
                 <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full">
-                  <div className="h-64 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
-                    <div className="text-8xl opacity-20">🎸</div>
+                  <div className="h-64 bg-slate-900 overflow-hidden">
+                    <img
+                      src="/images/guitars/yamaha-fg830.jpg"
+                      alt="Gitar akustik Yamaha FG830"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                   
                   <div className="p-6">
