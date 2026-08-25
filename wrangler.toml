@@ -1,0 +1,20 @@
+# ============================================================
+# SEWAGITAR.COM - Cloudflare Pages configuration (reference)
+# ============================================================
+#
+# DEPLOYMENT METHOD: Cloudflare Pages - Direct Upload
+# This project is a PURE STATIC SITE (Next.js output: export).
+# Cloudflare Pages serves the static files in /out directly.
+#
+# Wrangler Pages does NOT need a wrangler.toml file for direct
+# upload — everything is passed via CLI flags:
+#
+#   wrangler pages deploy out --project-name sewagitar
+#
+# The wrangler.toml below is kept minimal/valid for reference.
+# Project name: sewagitar
+# Build output: /out
+# ============================================================
+
+name = "sewagitar"
+compatibility_date = "2024-11-01"
