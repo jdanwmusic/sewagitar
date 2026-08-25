@@ -1,3 +1,15 @@
+import products from '../../data/products';
+
+// Helper: format angka ke Rupiah
+function formatRupiah(num: number): string {
+  return 'Rp ' + num.toLocaleString('id-ID') + '/hari';
+}
+
+// Helper: slug dari nama produk
+function slugify(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-');
+}
+
 export default function GitarPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -23,24 +35,26 @@ export default function GitarPage() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
-            <a href={`/gitar/yamaha-fg830`} key={i} className="group">
-              <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full">
+          {products.map((product) => (
+            <a href={`/gitar/${slugify(product.name)}`} key={product.id} className="group">
+              <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full flex flex-col">
                 <div className="h-64 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
                   <img
-                    src={i === 1 ? '/images/guitars/yamaha-fg830.jpg' : i === 2 ? '/images/guitars/fender-stratocaster.svg' : '/images/guitars/gibson-les-paul.svg'}
-                    alt={i === 1 ? 'Gitar akustik Yamaha FG830' : i === 2 ? 'Gitar elektrik Fender Stratocaster' : 'Gitar elektrik Gibson Les Paul'}
+                    src={`/images/guitars/${product.image}`}
+                    alt={`${product.brand} ${product.name}`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 
-                <div className="p-6">
-                  <h3 className="font-bold text-white text-lg mb-2">{i === 1 ? 'Yamaha FG830' : i === 2 ? 'Fender Stratocaster' : 'Gibson Les Paul'}</h3>
-                  <p className="text-sm text-slate-400 mb-4">{i === 1 ? 'Acoustic' : i === 2 ? 'Electric' : 'Electric'}</p>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="font-bold text-white text-lg mb-1">{product.name}</h3>
+                  <p className="text-sm text-slate-400 mb-4">{product.brand} • {product.type}</p>
+                  
+                  <p className="text-slate-400 text-sm mb-4 line-clamp-2 flex-1">{product.description}</p>
                   
                   <div className="pt-4 border-t border-slate-700 flex items-center justify-between">
-                    <div className="text-brand-500 font-bold text-lg">Rp {(75000 + i * 25000).toLocaleString('id-ID')}/hari</div>
+                    <div className="text-brand-500 font-bold text-lg">{formatRupiah(product.pricePerDay)}</div>
                     <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all text-sm">Sewa Sekarang</button>
                   </div>
                 </div>

@@ -1,3 +1,13 @@
+import products from '../data/products';
+
+function slugify(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-');
+}
+
+function formatRupiah(num: number): string {
+  return 'Rp ' + num.toLocaleString('id-ID');
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -60,26 +70,25 @@ export default function Home() {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <a href={`/gitar/yamaha-fg830`} key={i} className="group">
-                <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full">
+            {products.filter((p) => p.featured).map((product) => (
+              <a href={`/gitar/${slugify(product.name)}`} key={product.id} className="group">
+                <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full flex flex-col">
                   <div className="h-64 bg-slate-900 overflow-hidden">
                     <img
-                      src="/images/guitars/yamaha-fg830.jpg"
-                      alt="Gitar akustik Yamaha FG830"
+                      src={`/images/guitars/${product.image}`}
+                      alt={`${product.brand} ${product.name}`}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
                   </div>
                   
-                  <div className="p-6">
-                    <h3 className="font-bold text-white text-xl mb-2">Yamaha FG830</h3>
-                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">
-                      Gitar akustik solid-spruce top dengan suara jernih dan balanced. Perfect untuk cover band.
-                    </p>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="font-bold text-white text-xl mb-1">{product.name}</h3>
+                    <p className="text-slate-400 text-sm mb-3">{product.brand} • {product.type}</p>
+                    <p className="text-slate-400 text-sm mb-4 line-clamp-2 flex-1">{product.description}</p>
                     
                     <div className="pt-4 border-t border-slate-700 flex items-center justify-between">
-                      <div className="text-brand-500 font-bold text-lg">Rp 75.000/hari</div>
+                      <div className="text-brand-500 font-bold text-lg">{formatRupiah(product.pricePerDay)}</div>
                       <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all text-sm">
                         Sewa Sekarang
                       </button>
