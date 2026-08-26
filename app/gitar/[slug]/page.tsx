@@ -1,9 +1,5 @@
 import { notFound } from 'next/navigation';
-import products from '../../../data/products';
-
-function slugify(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-');
-}
+import products, { pricingPackages } from '../../../data/products';
 
 function formatRupiah(num: number): string {
   return 'Rp ' + num.toLocaleString('id-ID');
@@ -11,28 +7,20 @@ function formatRupiah(num: number): string {
 
 // Wajib untuk output: export — pre-generate semua halaman detail
 export function generateStaticParams() {
-  return products.map((p) => ({ slug: slugify(p.name) }));
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = products.find((p) => slugify(p.name) === slug);
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) {
     notFound();
   }
 
-  let specs: Record<string, unknown> = {};
-  try {
-    specs = JSON.parse(product.specs as string);
-  } catch {
-    specs = {};
-  }
-
-  // WhatsApp message default from data (or fallback)
   const message = product.whatsappMessage
     ? encodeURIComponent(product.whatsappMessage)
-    : encodeURIComponent(`Halo Sewagitar, saya tertarik menyewa ${product.name}. Apakah masih tersedia?`);
+    : encodeURIComponent(`Halo SEWAGITAR.COM, saya ingin menyewa ${product.name}.`);
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -49,7 +37,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
               <img
                 src={`/images/guitars/${product.image}`}
-                alt={`${product.brand} ${product.name}`}
+                alt={`Gitar ${product.type} untuk disewa`}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -58,42 +46,33 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {/* Product Info */}
           <div>
             <h1 className="font-heading text-4xl font-bold text-white mb-4">{product.name}</h1>
-            
-            <p className="text-slate-400 mb-6">{product.brand} • {product.type}</p>
-            
-            <div className="bg-slate-800 rounded-xl p-6 mb-6 border border-slate-700">
-              <div className="text-3xl font-bold text-brand-500 mb-2">
-                {formatRupiah(product.pricePerDay)}<span className="text-lg text-slate-400 font-normal">/hari</span>
-              </div>
-              
-              <div className="mt-4 pt-4 border-t border-slate-700 space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Deposit:</span>
-                  <span className="font-semibold">{formatRupiah(product.deposit as number)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Status:</span>
-                  <span className="text-green-500 capitalize">{product.status}</span>
-                </div>
-              </div>
+
+            <div className="mb-6 inline-block bg-brand-500/20 text-brand-400 font-semibold px-3 py-1 rounded-full text-sm uppercase tracking-wide">
+              {product.type}
             </div>
 
             <h3 className="font-bold text-white text-lg mb-3">Deskripsi</h3>
             <p className="text-slate-400 leading-relaxed mb-6">{product.description}</p>
 
-            {Object.keys(specs).length > 0 && (
-              <>
-                <h3 className="font-bold text-white text-lg mb-3">Spesifikasi</h3>
-                <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 mb-6 space-y-2 text-sm">
-                  {Object.entries(specs).map(([key, value]) => (
-                    <div key={key} className="flex justify-between">
-                      <span className="text-slate-400 capitalize">{key}</span>
-                      <span className="font-semibold">{String(value)}</span>
+            <h3 className="font-bold text-white text-lg mb-4">Harga Sewa</h3>
+            <div className="space-y-4 mb-8">
+              {pricingPackages.map((pkg) => (
+                <div key={pkg.id} className={`rounded-xl p-4 border ${pkg.highlight ? 'bg-brand-500/10 border-brand-500/40' : 'bg-slate-800 border-slate-700'}`}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-slate-400 text-sm">{pkg.period}</span>
+                    {pkg.tag && (
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded ${pkg.highlight ? 'bg-brand-500 text-slate-900' : 'bg-blue-500/20 text-blue-400'}`}>{pkg.tag}</span>
+                    )}
+                  </div>
+                  <div className="flex items-baseline justify-between">
+                    <div className="font-heading text-xl font-bold">
+                      {pkg.title}
                     </div>
-                  ))}
+                    <div className="text-brand-500 font-bold text-2xl">{formatRupiah(pkg.price)}</div>
+                  </div>
                 </div>
-              </>
-            )}
+              ))}
+            </div>
 
             <a
               href={`https://wa.me/6287748514337?text=${message}`}

@@ -1,13 +1,8 @@
 import products from '../../data/products';
 
-// Helper: format angka ke Rupiah
+// Harga paket standar (acuan JIP) — mulai dari 24 jam
 function formatRupiah(num: number): string {
-  return 'Rp ' + num.toLocaleString('id-ID') + '/hari';
-}
-
-// Helper: slug dari nama produk
-function slugify(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-');
+  return 'Rp ' + num.toLocaleString('id-ID');
 }
 
 export default function GitarPage() {
@@ -30,18 +25,18 @@ export default function GitarPage() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
-        <h1 className="font-heading text-4xl font-bold text-white mb-4">Katalog Gitar</h1>
-        <p className="text-slate-400 text-lg mb-8">Pilih instrument terbaik untuk kebutuhan Anda.</p>
+        <h1 className="font-heading text-4xl font-bold text-white mb-4">Pilih Gitar Anda</h1>
+        <p className="text-slate-400 text-lg mb-8">Tersedia 3 kategori instrumen berkualitas yang dirawat rutin dan siap pakai.</p>
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <a href={`/gitar/${slugify(product.name)}`} key={product.id} className="group">
+            <a href={`/gitar/${product.slug}`} key={product.id} className="group">
               <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full flex flex-col">
                 <div className="h-64 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
                   <img
                     src={`/images/guitars/${product.image}`}
-                    alt={`${product.brand} ${product.name}`}
+                    alt={`Gitar ${product.type} untuk disewa`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -49,12 +44,12 @@ export default function GitarPage() {
                 
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-bold text-white text-lg mb-1">{product.name}</h3>
-                  <p className="text-sm text-slate-400 mb-4">{product.brand} • {product.type}</p>
+                  <p className="text-sm text-brand-500 font-semibold mb-3 uppercase tracking-wide">{product.type}</p>
                   
                   <p className="text-slate-400 text-sm mb-4 line-clamp-2 flex-1">{product.description}</p>
                   
                   <div className="pt-4 border-t border-slate-700 flex items-center justify-between">
-                    <div className="text-brand-500 font-bold text-lg">{formatRupiah(product.pricePerDay)}</div>
+                    <div className="text-brand-500 font-bold text-lg">{formatRupiah(100000)}<span className="text-sm text-slate-400 font-normal">/24 jam</span></div>
                     <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all text-sm">Sewa Sekarang</button>
                   </div>
                 </div>

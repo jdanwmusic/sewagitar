@@ -12,16 +12,16 @@ export default function CaraSewaPage() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
-        <h1 className="font-heading text-4xl font-bold text-white mb-4">Cara Sewa</h1>
-        <p className="text-slate-400 text-lg mb-12">Proses sederhana dalam 4 langkah mudah</p>
+        <h1 className="font-heading text-4xl font-bold text-white mb-4">Cara Sewa Gitar</h1>
+        <p className="text-slate-400 text-lg mb-12">Proses peminjaman cepat dan mudah tanpa prosedur rumit.</p>
 
         {/* Steps */}
         <div className="space-y-8 max-w-3xl">
           {[
-            { step: '01', title: 'Pilih Gitar', desc: 'Lihat katalog gitar yang tersedia dan pilih instrument yang sesuai dengan kebutuhan Anda.' },
-            { step: '02', title: 'Hubungi WhatsApp', desc: 'Klik tombol "Sewa via WhatsApp" pada produk atau chat langsung ke nomor WhatsApp kami.' },
-            { step: '03', title: 'Konfirmasi Detail', desc: 'Tentukan tanggal sewa, durasi rental, metode pengambilan/pengiriman.' },
-            { step: '04', title: 'Selesai!', desc: 'Ambil gitar di workshop kami atau tunggu pengiriman ke lokasi Anda.' }
+            { step: '01', title: 'Pilih Gitar', desc: 'Pilih gitar elektrik, akustik, atau bass yang sesuai dengan kebutuhan musik Anda.' },
+            { step: '02', title: 'Hubungi Kami', desc: 'Hubungi melalui WhatsApp untuk menanyakan ketersediaan stok gitar pilihan Anda.' },
+            { step: '03', title: 'Tentukan Durasi', desc: 'Pilih durasi sewa 24 jam, mingguan (1 minggu), atau bulanan (1 bulan).' },
+            { step: '04', title: 'Antar atau Ambil', desc: 'Gitar dapat diantar ke lokasi Anda atau diambil langsung di lokasi usaha (Duri Kosambi, Cengkareng).' }
           ].map((item) => (
             <div key={item.step} className="bg-slate-800 rounded-xl p-6 border border-slate-700 flex gap-6">
               <div className="flex-shrink-0 w-16 h-16 bg-brand-500 rounded-full flex items-center justify-center font-bold text-slate-900 text-2xl">{item.step}</div>
@@ -38,7 +38,7 @@ export default function CaraSewaPage() {
           <h2 className="font-heading text-2xl font-bold text-slate-900 mb-4">Butuh Bantuan?</h2>
           <p className="text-slate-900 mb-6">Tim kami siap membantu Anda melalui WhatsApp</p>
           <a 
-            href="https://wa.me/6287748514337?text=Halo%2C%20saya%20butuh%20bantuan%20untuk%20menyewa%20gitar"
+            href="https://wa.me/6287748514337?text=Halo%20SEWAGITAR.COM%2C%20saya%20butuh%20bantuan%20untuk%20menyewa%20gitar."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white hover:bg-gray-100 text-slate-900 font-bold px-8 py-4 rounded-lg text-lg">

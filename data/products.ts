@@ -1,204 +1,94 @@
 // @ts-check
 
 /**
- * KATALOG GITAR SEWAGITAR.COM
- * 
- * CARA MENAMBAH/MENGEDIT PRODUK:
- * 1. Tambahkan object ke dalam array `products` di bawah ini
- * 2. Isi semua field yang diperlukan
- * 3. Simpan file
- * 
- * FIELD YANG PERLU DIISI:
- * - name: Nama produk (contoh: "Yamaha FG830")
- * - brand: Merek (contoh: "Yamaha")
- * - type: Tipe gitar (Acoustic, Electric, Bass, Classical)
- * - description: Deskripsi singkat 1-2 kalimat
- * - specs: String JSON berisi spesifikasi teknis
- * - pricePerDay: Harga sewa per hari (dalam Rupiah, angka saja tanpa Rp)
- * - deposit: Jaminan/deposit (dalam Rupiah, angka saja)
- * - status: "available" atau "unavailable"
- * - image: Nama file gambar di public/images/guitars/
- * - featured: true/false untuk tampilkan di homepage
- * - whatsappMessage: Pesan otomatis WhatsApp jika tersedia
+ * KATALOG SEWAGITAR.COM
+ * Data bisnis mengikuti referensi JIP (100% acuan).
+ * Struktur: 3 kategori instrumen dengan harga paket.
+ *
+ * CARA MENGEDIT:
+ * - Tambah/ubah kategori di array `products`
+ * - Harga paket konsisten di semua kategori (Rp100.000/24jam, Rp300.000/minggu, Rp1.000.000/bulan)
+ * - Ganti image dengan nama file di public/images/guitars/
  */
 
 const products = [
   {
     id: 1,
-    name: "Yamaha FG830",
-    brand: "Yamaha",
-    type: "Acoustic",
-    description: "Gitar akustik solid-spruce top dengan suara jernih dan balanced. Perfect untuk cover band, latihan, maupun recording.",
-    specs: JSON.stringify({
-      bodyType: "Dreadnought",
-      top: "Solid Spruce",
-      backSides: "Rosewood",
-      neck: "Mahogany",
-      fretboard: "Rosewood",
-      pickup: "None",
-      color: "Natural"
-    }),
-    pricePerDay: 75000,
-    deposit: 1200000,
-    status: "available",
-    image: "yamaha-fg830.jpg",
+    slug: "gitar-elektrik",
+    name: "Gitar Elektrik",
+    type: "Elektrik",
+    description: "Siap menemani sesi rekaman, panggung, maupun latihan band Anda dengan performa pick-up maksimal.",
+    image: "gitar-elektrik.jpg",
     featured: true,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Yamaha FG830. Apakah masih tersedia?"
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin menyewa Gitar Elektrik."
   },
   {
     id: 2,
-    name: "Fender Stratocaster Player",
-    brand: "Fender",
-    type: "Electric",
-    description: "Elektrik dengan suara versatile untuk blues, rock, pop. Setup baru ready to play dengan hardware berkualitas.",
-    specs: JSON.stringify({
-      bodyType: "Solid Body",
-      wood: "Alder",
-      neck: "Maple",
-      pickup: "3x Single Coil (Player Series)",
-      bridge: "2-Point Synchronized Tremolo",
-      frets: 22,
-      color: "Sunburst"
-    }),
-    pricePerDay: 95000,
-    deposit: 1500000,
-    status: "available",
-    image: "fender-stratocaster.jpg",
+    slug: "gitar-akustik",
+    name: "Gitar Akustik",
+    type: "Akustik",
+    description: "Suara jernih dan resonansi natural, ideal untuk kafe, akustikan santai, atau latihan di rumah.",
+    image: "gitar-akustik.jpg",
     featured: true,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Fender Stratocaster Player. Apakah masih tersedia?"
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin menyewa Gitar Akustik."
   },
   {
     id: 3,
-    name: "Gibson Les Paul Studio",
-    brand: "Gibson",
-    type: "Electric",
-    description: "Les Paul klasik dengan tone warm thick yang iconic. Cocok untuk hard rock, metal, dan blues.",
-    specs: JSON.stringify({
-      bodyType: "Solid Body",
-      top: "Mahogany with Maple cap",
-      neck: "Mahogany",
-      pickup: "2x BurstBucker Pro",
-      bridge: "Tune-O-Matic",
-      frets: 22,
-      color: "Ebony"
-    }),
-    pricePerDay: 160000,
-    deposit: 2500000,
-    status: "available",
-    image: "gibson-les-paul.jpg",
-    featured: true,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Gibson Les Paul Studio. Apakah masih tersedia?"
-  },
-  {
-    id: 4,
-    name: "Fender Jazz Bass Active",
-    brand: "Fender",
+    slug: "gitar-bass",
+    name: "Gitar Bass",
     type: "Bass",
-    description: "Bass modern dengan active pickups. Punchy low-end cocok untuk funk, jazz, rock, dan segala genre musik.",
-    specs: JSON.stringify({
-      bodyType: "Jazz Bass",
-      wood: "Ash",
-      neck: "Maple",
-      pickup: "2x Active Humbuckers",
-      bridge: "FM Hi-Ride",
-          strings: 4,
-          scale: "34\"",
-          color: "Black"
-    }),
-    pricePerDay: 105000,
-    deposit: 1700000,
-    status: "available",
-    image: "fender-jazz-bass.jpg",
-    featured: false,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Fender Jazz Bass Active. Apakah masih tersedia?"
+    description: "Low-end bertenaga dan solid untuk melengkapi rhythm section band atau kebutuhan recording Anda.",
+    image: "gitar-bass.jpg",
+    featured: true,
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin menyewa Gitar Bass."
+  }
+];
+
+/**
+ * PAKET HARGA SEWA (berlaku untuk semua kategori, acuan JIP)
+ */
+export const pricingPackages = [
+  {
+    id: "24jam",
+    period: "Harian",
+    title: "24 JAM",
+    price: 100000,
+    features: [
+      "Berlaku untuk semua jenis gitar",
+      "Durasi sewa 24 jam penuh",
+      "Siap pakai & terawat"
+    ],
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin sewa paket 24 Jam (Rp100.000).",
+    highlight: false,
+    tag: null
   },
   {
-    id: 5,
-    name: "Ibanez RG670M",
-    brand: "Ibanez",
-    type: "Electric",
-    description: "Superstrat untuk shredding dengan Floyd Rose tremolo & fast neck profile. Perfect untuk metal & fusion.",
-    specs: JSON.stringify({
-      bodyType: "Superstrat",
-      wood: "Poplar",
-      neck: "MAPLE/walnut/maple",
-      pickup: "2x Ibanez Infinity Humbucker",
-      bridge: "Floyd Rose Special",
-      frets: 24,
-      color: "Midnight Blue"
-    }),
-    pricePerDay: 85000,
-    deposit: 1400000,
-    status: "available",
-    image: "ibanez-rg670m.jpg",
-    featured: false,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Ibanez RG670M. Apakah masih tersedia?"
+    id: "1minggu",
+    period: "Mingguan",
+    title: "1 MINGGU",
+    price: 300000,
+    features: [
+      "Berlaku untuk semua jenis gitar",
+      "Lebih hemat untuk latihan/projek",
+      "Perpanjangan mudah via WhatsApp"
+    ],
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin sewa paket 1 Minggu (Rp300.000).",
+    highlight: true,
+    tag: "LEBIH HEMAT"
   },
   {
-    id: 6,
-    name: "Yamaha C40 Classical",
-    brand: "Yamaha",
-    type: "Classical",
-    description: "Gitar klasik tradisional dengan nylon string. Suara hangat cocok untuk flamenco, bossa nova, dan komposisi klasik.",
-    specs: JSON.stringify({
-      bodyType: "Classical",
-      top: "Spruce",
-      backSides: "Nato",
-      neck: "Nato",
-      fretboard: "Rosewood",
-      strings: "Nylon",
-      color: "Natural"
-    }),
-    pricePerDay: 60000,
-    deposit: 1000000,
-    status: "available",
-    image: "yamaha-c40.jpg",
-    featured: false,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Yamaha C40 Classical. Apakah masih tersedia?"
-  },
-  {
-    id: 7,
-    name: "Fender Frontman 40",
-    brand: "Fender",
-    type: "Amplifier",
-    description: "Amplifier gitar 40W dengan built-in effects. Perfect untuk latihan di rumah atau panggung kecil.",
-    specs: JSON.stringify({
-      power: "40W",
-      speaker: "1x12\" Fender Special Design",
-      channels: "2",
-      effects: "Digital Reverb",
-      inputs: "Instrument, Aux In, Headphone",
-      weight: "11.8 kg",
-      color: "Black"
-    }),
-    pricePerDay: 45000,
-    deposit: 800000,
-    status: "available",
-    image: "fender-frontman40.jpg",
-    featured: false,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Fender Frontman 40 Amplifier. Apakah masih tersedia?"
-  },
-  {
-    id: 8,
-    name: "Boss ME-80 Multi-FX",
-    brand: "Boss",
-    type: "Effects",
-    description: "Pedalboard all-in-one dengan 80+ efek factory preset. Compact & powerful untuk berbagai gaya bermain.",
-    specs: JSON.stringify({
-      effects: "80+ presets",
-      ampModels: "10",
-      input: "Mono 1/4\"",
-      output: "Stereo 1/4\"",
-          features: "Built-in Looper, Metronome, USB Audio Interface",
-      power: "AC Adapter (included)",
-      size: "Compact"
-    }),
-    pricePerDay: 35000,
-    deposit: 600000,
-    status: "available",
-    image: "boss-me80.jpg",
-    featured: false,
-    whatsappMessage: "Halo Sewagitar, saya tertarik menyewa Boss ME-80 Multi-FX. Apakah masih tersedia?"
+    id: "1bulan",
+    period: "Bulanan",
+    title: "1 BULAN",
+    price: 1000000,
+    features: [
+      "Berlaku untuk semua jenis gitar",
+      "Solusi terbaik jangka panjang",
+      "Nilai ekonomis maksimal"
+    ],
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin sewa paket 1 Bulan (Rp1.000.000).",
+    highlight: false,
+    tag: "PALING HEMAT"
   }
 ];
 

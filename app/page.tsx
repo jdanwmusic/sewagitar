@@ -1,8 +1,4 @@
-import products from '../data/products';
-
-function slugify(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-');
-}
+import products, { pricingPackages } from '../data/products';
 
 function formatRupiah(num: number): string {
   return 'Rp ' + num.toLocaleString('id-ID');
@@ -15,68 +11,51 @@ export default function Home() {
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span className="text-sm text-slate-300">Layanan Cepat Jakarta & Tangerang</span>
+          </div>
+
           <h1 className="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
-            SEWA GITAR,{' '}
-            <span className="text-brand-500">GAMPANG.</span>
+            SEWA GITAR <br className="hidden md:block" />
+            <span className="text-brand-500">DI JAKARTA & TANGERANG</span>
           </h1>
           
           <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Sewa gitar berkualitas untuk latihan, recording, panggung, dan event. 
-            Pilihan gitar terawat, harga transparan, proses mudah melalui WhatsApp.
+            Gitar elektrik, akustik, dan bass siap disewa untuk berbagai kebutuhan rekaman, latihan, atau panggung.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <a href="/gitar" className="bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-slate-900 font-bold px-6 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg text-lg">
-              Lihat Koleksi Gitar
+              Lihat Pilihan Gitar
             </a>
             <a 
-              href={`https://wa.me/6287748514337?text=Halo%2C%20saya%20mau%20tanya%20tersedianya%20gitar`}
+              href="https://wa.me/6287748514337?text=Halo%20SEWAGITAR.COM%2C%20saya%20ingin%20menyewa%20gitar."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg text-lg">
-              Chat WhatsApp
+              Sewa Sekarang via WhatsApp
             </a>
-          </div>
-          
-          {/* Trust Badges */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <div className="text-brand-500 text-3xl mb-2">✓</div>
-              <h3 className="font-bold text-white text-lg mb-2">Kondisi Terawat</h3>
-              <p className="text-sm text-slate-400">Setup baru, ready to play</p>
-            </div>
-            
-            <div className="p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <div className="text-brand-500 text-3xl mb-2">💬</div>
-              <h3 className="font-bold text-white text-lg mb-2">Proses Mudah</h3>
-              <p className="text-sm text-slate-400">Konfirmasi via WhatsApp</p>
-            </div>
-            
-            <div className="p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <div className="text-brand-500 text-3xl mb-2">🚀</div>
-              <h3 className="font-bold text-white text-lg mb-2">Delivery Available</h3>
-              <p className="text-sm text-slate-400">Jabodetabek same-day</p>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* CATALOG PREVIEW */}
+      {/* CATALOG PREVIEW — 3 kategori JIP */}
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-4xl font-bold text-white text-center mb-4">Koleksi Gitar</h2>
+          <h2 className="font-heading text-4xl font-bold text-white text-center mb-4">Pilih Gitar yang Kamu Butuhkan</h2>
           <p className="text-center text-slate-400 mb-12 text-lg max-w-2xl mx-auto">
-            Pilih instrument terbaik untuk kebutuhan Anda. Semua gitar siap pakai dengan kondisi prima.
+            Tersedia 3 kategori instrumen berkualitas yang dirawat rutin dan siap pakai.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.filter((p) => p.featured).map((product) => (
-              <a href={`/gitar/${slugify(product.name)}`} key={product.id} className="group">
+              <a href={`/gitar/${product.slug}`} key={product.id} className="group">
                 <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full flex flex-col">
                   <div className="h-64 bg-slate-900 overflow-hidden">
                     <img
                       src={`/images/guitars/${product.image}`}
-                      alt={`${product.brand} ${product.name}`}
+                      alt={`Gitar ${product.type} untuk disewa`}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -84,11 +63,11 @@ export default function Home() {
                   
                   <div className="p-6 flex flex-col flex-1">
                     <h3 className="font-bold text-white text-xl mb-1">{product.name}</h3>
-                    <p className="text-slate-400 text-sm mb-3">{product.brand} • {product.type}</p>
+                    <p className="text-brand-500 text-sm font-semibold uppercase tracking-wide mb-3">{product.type}</p>
                     <p className="text-slate-400 text-sm mb-4 line-clamp-2 flex-1">{product.description}</p>
                     
                     <div className="pt-4 border-t border-slate-700 flex items-center justify-between">
-                      <div className="text-brand-500 font-bold text-lg">{formatRupiah(product.pricePerDay)}</div>
+                      <div className="text-brand-500 font-bold text-lg">{formatRupiah(100000)}<span className="text-sm text-slate-400 font-normal">/24 jam</span></div>
                       <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all text-sm">
                         Sewa Sekarang
                       </button>
@@ -101,26 +80,64 @@ export default function Home() {
           
           <div className="text-center mt-12">
             <a href="/gitar" className="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-lg transition-all text-lg">
-              Lihat Semua Gitar →
+              Lihat Semua Pilihan →
             </a>
           </div>
         </div>
       </section>
 
-      {/* HOW TO RENT */}
+      {/* HARGA SEWA — 3 paket JIP */}
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-4xl font-bold text-white text-center mb-4">Cara Sewa</h2>
+          <h2 className="font-heading text-4xl font-bold text-white text-center mb-4">Harga Sewa Sederhana</h2>
           <p className="text-center text-slate-400 mb-16 text-lg max-w-2xl mx-auto">
-            Proses sederhana dalam 4 langkah mudah
+            Tarif flat yang sama untuk seluruh kategori instrumen: Gitar Elektrik • Gitar Akustik • Gitar Bass
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {pricingPackages.map((pkg) => (
+              <div key={pkg.id} className={`rounded-xl p-8 ${pkg.highlight ? 'bg-brand-500/10 border-2 border-brand-500/50' : 'bg-slate-900 border border-slate-700'} flex flex-col`}>
+                {pkg.tag && (
+                  <span className={`inline-block self-start text-xs font-bold px-2 py-0.5 rounded mb-3 ${pkg.highlight ? 'bg-brand-500 text-slate-900' : 'bg-blue-500/20 text-blue-400'}`}>{pkg.tag}</span>
+                )}
+                <span className="text-slate-400 text-sm mb-1">{pkg.period}</span>
+                <div className="font-heading text-2xl font-bold text-white mb-2">{pkg.title}</div>
+                <div className="text-brand-500 font-bold text-4xl mb-6">{formatRupiah(pkg.price)}</div>
+                <ul className="space-y-2 text-slate-400 text-sm mb-8 flex-1">
+                  {pkg.features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-brand-500 mt-0.5">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={`https://wa.me/6287748514337?text=${encodeURIComponent(pkg.whatsappMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full text-center font-semibold px-4 py-3 rounded-lg transition-all ${pkg.highlight ? 'bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-slate-900 font-bold' : 'bg-white/10 hover:bg-white/20 text-white'}`}>
+                  Pilih Paket {pkg.title}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW TO RENT — langkah JIP */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading text-4xl font-bold text-white text-center mb-4">Cara Sewa Gitar</h2>
+          <p className="text-center text-slate-400 mb-16 text-lg max-w-2xl mx-auto">
+            Proses peminjaman cepat dan mudah tanpa prosedur rumit.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { step: 1, title: 'Pilih Gitar', desc: 'Lihat katalog dan pilih instrument yang sesuai' },
-              { step: 2, title: 'Hubungi WhatsApp', desc: 'Klik tombol WhatsApp untuk tanya ketersediaan' },
-              { step: 3, title: 'Tentukan Detail', desc: 'Sepakati tanggal sewa dan metode pengiriman' },
-              { step: 4, title: 'Selesai!', desc: 'Ambil gitar atau tunggu pengiriman' }
+              { step: 1, title: 'Pilih Gitar', desc: 'Pilih gitar elektrik, akustik, atau bass yang sesuai dengan kebutuhan musik Anda.' },
+              { step: 2, title: 'Hubungi Kami', desc: 'Hubungi melalui WhatsApp untuk menanyakan ketersediaan stok gitar pilihan Anda.' },
+              { step: 3, title: 'Tentukan Durasi', desc: 'Pilih durasi sewa 24 jam, mingguan (1 minggu), atau bulanan (1 bulan).' },
+              { step: 4, title: 'Antar atau Ambil', desc: 'Gitar dapat diantar ke lokasi Anda atau diambil langsung di lokasi usaha.' }
             ].map((item) => (
               <div key={item.step} className="text-center">
                 <div className="w-16 h-16 bg-brand-500 rounded-full flex items-center justify-center font-bold text-slate-900 text-2xl mx-auto mb-4">
@@ -134,45 +151,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ PREVIEW */}
-      <section className="py-20 bg-slate-900">
+      {/* AREA LAYANAN — Jakarta & Tangerang + alamat */}
+      <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-4xl font-bold text-white text-center mb-4">Pertanyaan Umum</h2>
-          
-          <div className="max-w-3xl mx-auto mt-12 space-y-4">
-            {[
-              { q: "Berapa deposit minimum?", a: "Deposit berkisar Rp 600.000 - Rp 2.500.000 tergantung jenis gitar." },
-              { q: "Apakah bisa dikirim?", a: "Ya! Kami melayani pengiriman ke seluruh Jabodetabek." },
-              { q: "Bagaimana jika alat rusak?", a: "Normal wear tear tidak menjadi masalah." }
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-white/5 rounded-xl p-6 border border-slate-700 hover:border-brand-500/30 transition-all">
-                <h4 className="font-bold text-white text-lg mb-2">{faq.q}</h4>
-                <p className="text-slate-400">{faq.a}</p>
+          <div className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-8 md:p-12">
+                <span className="inline-block bg-brand-500/20 text-brand-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                  Cakupan Wilayah
+                </span>
+                <h2 className="font-heading text-3xl font-bold text-white mb-4">Melayani Jakarta & Tangerang</h2>
+                <p className="text-slate-400 leading-relaxed mb-6">
+                  SEWAGITAR.COM melayani penyewaan gitar khusus untuk area Jakarta dan Tangerang dengan akses mudah untuk penjemputan langsung maupun pengantaran kurir.
+                </p>
+                <div className="flex items-start gap-3 mb-8">
+                  <span className="text-brand-500 text-xl mt-1">📍</span>
+                  <div>
+                    <strong className="text-white block mb-1">Alamat Usaha:</strong>
+                    <span className="text-slate-400 text-sm">Jl. Semanan Pintu Air No. 37, RT 07/RW 12, Duri Kosambi, Kecamatan Cengkareng, Jakarta Barat</span>
+                  </div>
+                </div>
+                <a
+                  href="https://wa.me/6287748514337?text=Halo%20SEWAGITAR.COM%2C%20saya%20ingin%20tanya%20layanan%20pengantaran%20area%20Jakarta%20Tangerang."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-slate-900 font-bold px-6 py-3 rounded-lg transition-all">
+                  Tanyakan Area Pengantaran
+                </a>
               </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <a href="/faq" className="inline-block text-brand-500 hover:text-brand-400 font-semibold transition-all text-lg">
-              Lihat Semua FAQ →
-            </a>
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-8 md:p-12 flex flex-col justify-center">
+                <div className="text-brand-500 text-4xl mb-4">🎸</div>
+                <h3 className="font-heading text-2xl font-bold text-white mb-2">Jakarta & Tangerang</h3>
+                <p className="text-slate-400">Siap melayani pengambilan langsung di Duri Kosambi Cengkareng atau koordinasi pengiriman wilayah Jabodetabek terdekat.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA SECTION */}
+      {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-brand-600 to-brand-700 text-slate-900">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading text-4xl font-bold mb-4">Butuh Gitar?</h2>
+          <h2 className="font-heading text-4xl font-bold mb-4">Butuh Gitar untuk Disewa?</h2>
           <p className="text-lg text-slate-900 mb-8 max-w-2xl mx-auto">
-            Langsung hubungi kami untuk konsultasi dan pemesanan. Admin siap membantu 24/7 via WhatsApp.
+            Hubungi kami melalui WhatsApp untuk mengecek ketersediaan gitar pilihan Anda hari ini.
           </p>
           <a 
-            href={`https://wa.me/6287748514337?text=Halo%2C%20saya%20ingin%20menyewa%20gitar`}
+            href="https://wa.me/6287748514337?text=Halo%20SEWAGITAR.COM%2C%20saya%20butuh%20gitar%20untuk%20disewa."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white hover:bg-gray-100 text-slate-900 font-bold px-12 py-5 rounded-lg text-xl transition-all transform hover:scale-105 shadow-2xl">
-            Chat WhatsApp Sekarang
+            Sewa Sekarang via WhatsApp
           </a>
         </div>
       </section>
@@ -186,7 +215,7 @@ export default function Home() {
                 <div className="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center font-bold text-slate-900 text-base">SG</div>
                 <span className="font-heading text-xl font-bold text-white tracking-wide">SEWAGITAR.COM</span>
               </div>
-              <p className="text-slate-400 text-sm">Partner penyewaan alat musik terpercaya untuk musisi profesional di Jabodetabek.</p>
+              <p className="text-slate-400 text-sm">Solusi praktis penyewaan gitar elektrik, akustik, dan bass untuk area Jakarta dan Tangerang.</p>
             </div>
             
             <div>
@@ -200,31 +229,41 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="font-bold text-white mb-4">Produk</h4>
+              <h4 className="font-bold text-white mb-4">Kategori</h4>
               <ul className="space-y-2 text-slate-400 text-sm">
-                <li><a href="/gitar?type=acoustic" className="hover:text-brand-500">Gitar Akustik</a></li>
-                <li><a href="/gitar?type=electric" className="hover:text-brand-500">Gitar Elektrik</a></li>
-                <li><a href="/gitar?type=bass" className="hover:text-brand-500">Bass Guitar</a></li>
-                <li><a href="/gitar?type=amplifier" className="hover:text-brand-500">Amplifier</a></li>
+                <li><a href="/gitar/gitar-elektrik" className="hover:text-brand-500">Gitar Elektrik</a></li>
+                <li><a href="/gitar/gitar-akustik" className="hover:text-brand-500">Gitar Akustik</a></li>
+                <li><a href="/gitar/gitar-bass" className="hover:text-brand-500">Gitar Bass</a></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-bold text-white mb-4">Kontak</h4>
               <ul className="space-y-2 text-slate-400 text-sm">
-                <li className="flex items-center"><span className="text-brand-500 mr-2">📞</span> 0877-4851-4337</li>
-                <li className="flex items-center"><span className="text-brand-500 mr-2">📍</span> Jakarta & Jabodetabek</li>
-                <li className="flex items-center"><span className="text-brand-500 mr-2">⏰</span> Senin - Sabtu: 09.00-18.00</li>
-                <li className="flex items-center"><span className="text-brand-500 mr-2">✉️</span> info@sewagitar.com</li>
+                <li><a href="https://wa.me/6287748514337" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-brand-500"><span className="text-brand-500 mr-2">📞</span> 0877-4851-4337</a></li>
+                <li><a href="mailto:jdanwmusic@gmail.com" className="flex items-center hover:text-brand-500"><span className="text-brand-500 mr-2">✉️</span> jdanwmusic@gmail.com</a></li>
+                <li><a href="https://www.facebook.com/share/1BkS7NkLxN/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-brand-500"><span className="text-brand-500 mr-2">📘</span> Facebook SEWAGITAR.COM</a></li>
+                <li className="flex items-start"><span className="text-brand-500 mr-2 mt-0.5">📍</span> Jl. Semanan Pintu Air No. 37, Duri Kosambi, Cengkareng, Jakarta Barat</li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+          <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm space-y-1">
             <p>&copy; 2026 SEWAGITAR.COM. All rights reserved.</p>
+            <p>Sewa Gitar Elektrik, Akustik, & Bass Jakarta & Tangerang</p>
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp */}
+      <a
+        href="https://wa.me/6287748514337?text=Halo%20SEWAGITAR.COM%2C%20saya%20ingin%20menyewa%20gitar."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat WhatsApp"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white shadow-2xl z-50 transition-all transform hover:scale-110">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .162 5.331.165 11.885c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.822 11.822 0 005.683 1.448h.005c6.554 0 11.887-5.331 11.885-11.885a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
     </div>
   );
 }

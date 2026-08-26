@@ -1,11 +1,11 @@
 export default function FaqPage() {
   const faqs = [
-    { q: "Berapa harga sewa minimum?", a: "Harga sewa bervariasi tergantung jenis gitar, mulai dari Rp 35.000/hari hingga Rp 160.000/hari." },
-    { q: "Berapa deposit yang diperlukan?", a: "Deposit berkisar Rp 600.000 - Rp 2.500.000 tergantung nilai instrument yang disewa." },
-    { q: "Apakah bisa sewa harian?", a: "Ya! Kami melayani sewa fleksibel mulai dari 1 hari hingga bulanan dengan diskon jangka panjang." },
-    { q: "Apakah bisa dikirim ke lokasi?", a: "Ya! Kami melayani pengiriman ke seluruh Jabodetabek dengan biaya tambahan transparan." },
-    { q: "Bagaimana jika gitar rusak?", a: "Normal wear tear tidak menjadi masalah. Kerusakan berat akibat kelalaian dikenakan biaya reparasi." },
-    { q: "Apa saja yang termasuk paket rental?", a: "Instrument utama + hardcase/gigbag standar + aksesori dasar (kabel, strap)." }
+    { q: "Gitar apa saja yang bisa disewa?", a: "Kami menyediakan 3 kategori gitar: Gitar Elektrik, Gitar Akustik, dan Gitar Bass. Semua instrumen dirawat rutin dan siap pakai." },
+    { q: "Berapa harga sewanya?", a: "Harga berlaku flat untuk semua jenis gitar: Rp100.000 untuk 24 jam, Rp300.000 untuk 1 minggu, dan Rp1.000.000 untuk 1 bulan." },
+    { q: "Berapa durasi sewa yang tersedia?", a: "Ada 3 pilihan durasi: 24 jam (harian), 1 minggu (mingguan), dan 1 bulan (bulanan). Perpanjangan mudah dilakukan via WhatsApp." },
+    { q: "Area mana saja yang dilayani?", a: "Kami melayani area Jakarta dan Tangerang. Tersedia pengantaran kurir atau penjemputan langsung di lokasi usaha kami di Cengkareng, Jakarta Barat." },
+    { q: "Bagaimana cara memesan/sewa?", a: "Cukup hubungi kami melalui WhatsApp, tentukan gitar pilihan (elektrik/akustik/bass), pilih durasi, lalu konfirmasi. Proses cepat dan tanpa prosedur rumit." },
+    { q: "Apakah gitar bisa diantar?", a: "Ya. Untuk area Jakarta & Tangerang, gitar dapat diantar ke lokasi Anda atau Anda dapat mengambil langsung di alamat usaha kami." }
   ];
 
   return (
@@ -22,7 +22,7 @@ export default function FaqPage() {
 
       <div className="container mx-auto px-4 py-8">
         <h1 className="font-heading text-4xl font-bold text-white mb-4">Pertanyaan Umum</h1>
-        <p className="text-slate-400 text-lg mb-12">Info lengkap tentang layanan penyewaan kami</p>
+        <p className="text-slate-400 text-lg mb-12">Info lengkap tentang layanan penyewaan gitar di Jakarta & Tangerang</p>
 
         <div className="max-w-3xl space-y-4">
           {faqs.map((faq, idx) => (
@@ -38,7 +38,7 @@ export default function FaqPage() {
           <h3 className="font-heading text-2xl font-bold text-white mb-4">Masih Ada Pertanyaan?</h3>
           <p className="text-slate-400 mb-6">Tim kami siap membantu menjawab pertanyaan Anda</p>
           <a 
-            href="https://wa.me/6287748514337?text=Halo%2C%20saya%20punya%20pertanyaan%20tambahan"
+            href="https://wa.me/6287748514337?text=Halo%20SEWAGITAR.COM%2C%20saya%20punya%20pertanyaan%20tambahan."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-lg text-lg">

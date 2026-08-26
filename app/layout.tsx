@@ -14,25 +14,23 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: 'SEWAGITAR.COM | Sewa Gitar Profesional Jakarta & Jabodetabek',
-  description: 'Sewa gitar berkualitas untuk latihan, recording, panggung, dan event. Tersedia gitar elektrik, akustik, bass beserta amplifier dan aksesoris. Ready to use, delivery Jabodetabek.',
+  title: 'Sewa Gitar Jakarta & Tangerang | SEWAGITAR.COM',
+  description: 'Sewa gitar elektrik, akustik, dan bass di Jakarta & Tangerang. Pilihan sewa 24 jam, mingguan, dan bulanan. Hubungi SEWAGITAR.COM melalui WhatsApp.',
   keywords: [
     'sewa gitar',
-    'rental gitar',
-    'sewa gitar listrik',
-    'sewa gitar akustik',
-    'sewa bass',
-    'rental amplifier',
-    'sewa gitar untuk event',
-    'sewa gitar untuk recording',
     'sewa gitar jakarta',
-    'rental alat musik'
+    'sewa gitar tangerang',
+    'rental gitar jakarta',
+    'rental gitar tangerang',
+    'sewa gitar elektrik',
+    'sewa gitar akustik',
+    'sewa gitar bass'
   ],
   openGraph: {
-    title: 'SEWAGITAR.COM | Sewa Gitar Profesional',
-    description: 'Rental alat musik profesional Jakarta - Sewa gitar, bass, amplifier siap pakai',
-    url: 'https://sewagitar.com',
-    siteName: 'SewaGitar.com',
+    title: 'Sewa Gitar Jakarta & Tangerang | SEWAGITAR.COM',
+    description: 'Sewa gitar elektrik, akustik, dan bass di Jakarta & Tangerang. Pilihan sewa 24 jam, mingguan, dan bulanan.',
+    url: 'https://sewagitar.com/',
+    siteName: 'SEWAGITAR.COM',
     locale: 'id_ID',
     type: 'website',
   },
