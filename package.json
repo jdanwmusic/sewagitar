@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "build:pages": "next build",
     "deploy:pages": "next build && wrangler pages deploy out --project-name sewagitar"
   },
   "dependencies": {
