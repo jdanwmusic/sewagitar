@@ -1,3 +1,5 @@
+import FloatingWA from '../../components/FloatingWA';
+
 export default function FaqPage() {
   const faqs = [
     { q: "Gitar apa saja yang bisa disewa?", a: "Kami menyediakan 3 kategori gitar: Gitar Elektrik, Gitar Akustik, dan Gitar Bass. Semua instrumen dirawat rutin dan siap pakai." },
@@ -46,6 +48,8 @@ export default function FaqPage() {
           </a>
         </div>
       </div>
+
+      <FloatingWA />
     </div>
   );
 }

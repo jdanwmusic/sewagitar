@@ -1,4 +1,5 @@
 import products from '../../data/products';
+import FloatingWA from '../../components/FloatingWA';
 
 // Harga paket standar (acuan JIP) — mulai dari 24 jam
 function formatRupiah(num: number): string {
@@ -50,7 +51,7 @@ export default function GitarPage() {
                   
                   <div className="pt-4 border-t border-slate-700 flex items-center justify-between">
                     <div className="text-brand-500 font-bold text-lg">{formatRupiah(100000)}<span className="text-sm text-slate-400 font-normal">/24 jam</span></div>
-                    <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all text-sm">Sewa Sekarang</button>
+                    <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all text-sm">Lihat Detail</button>
                   </div>
                 </div>
               </div>
@@ -58,6 +59,8 @@ export default function GitarPage() {
           ))}
         </div>
       </div>
+
+      <FloatingWA />
     </div>
   );
 }

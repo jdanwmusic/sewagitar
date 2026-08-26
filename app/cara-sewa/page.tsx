@@ -1,3 +1,5 @@
+import FloatingWA from '../../components/FloatingWA';
+
 export default function CaraSewaPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -46,6 +48,8 @@ export default function CaraSewaPage() {
           </a>
         </div>
       </div>
+
+      <FloatingWA />
     </div>
   );
 }

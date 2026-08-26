@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import products, { pricingPackages } from '../../../data/products';
+import FloatingWA from '../../../components/FloatingWA';
 
 function formatRupiah(num: number): string {
   return 'Rp ' + num.toLocaleString('id-ID');
@@ -84,6 +85,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </div>
+
+      <FloatingWA />
     </div>
   );
 }
