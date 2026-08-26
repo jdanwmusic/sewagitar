@@ -57,7 +57,7 @@ export default function Home() {
                     <img
                       src={`/images/guitars/${product.image}`}
                       alt={`Gitar ${product.type} untuk disewa`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain p-4"
                       loading="lazy"
                     />
                   </div>

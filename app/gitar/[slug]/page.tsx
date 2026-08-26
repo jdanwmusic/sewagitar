@@ -39,7 +39,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <img
                 src={`/images/guitars/${product.image}`}
                 alt={`Gitar ${product.type} untuk disewa`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-4"
               />
             </div>
           </div>

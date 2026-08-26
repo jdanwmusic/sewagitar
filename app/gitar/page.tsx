@@ -34,11 +34,11 @@ export default function GitarPage() {
           {products.map((product) => (
             <a href={`/gitar/${product.slug}`} key={product.id} className="group">
               <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl border border-brand-600/20 group-hover:border-brand-500/40 transition-all h-full flex flex-col">
-                <div className="h-64 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
+                <div className="h-64 bg-slate-900 overflow-hidden">
                   <img
                     src={`/images/guitars/${product.image}`}
                     alt={`Gitar ${product.type} untuk disewa`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-4"
                     loading="lazy"
                   />
                 </div>
