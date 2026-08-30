@@ -24,10 +24,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     : encodeURIComponent(`Halo SEWAGITAR.COM, saya ingin menyewa ${product.name}.`);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <header className="bg-slate-800 border-b border-brand-600/30 sticky top-0 z-50">
+    <div className="min-h-screen bg-surface-deep text-white">
+      <header className="bg-surface-raised border-b border-brand-600/30 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <a href="/gitar" className="text-slate-300 hover:text-white transition-colors">&larr; Kembali ke Katalog</a>
+          <a href="/gitar" className="text-text-secondary hover:text-white transition-colors">&larr; Kembali ke Katalog</a>
         </div>
       </header>
 
@@ -35,7 +35,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Product Image */}
           <div>
-            <div className="bg-slate-800 rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
+            <div className="bg-surface-raised rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
               <img
                 src={`/images/guitars/${product.image}`}
                 alt={`Gitar ${product.type} untuk disewa`}
@@ -53,14 +53,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
 
             <h3 className="font-bold text-white text-lg mb-3">Deskripsi</h3>
-            <p className="text-slate-400 leading-relaxed mb-6">{product.description}</p>
+            <p className="text-text-muted leading-relaxed mb-6">{product.description}</p>
 
             <h3 className="font-bold text-white text-lg mb-4">Harga Sewa</h3>
             <div className="space-y-4 mb-8">
               {pricingPackages.map((pkg) => (
-                <div key={pkg.id} className={`rounded-xl p-4 border ${pkg.highlight ? 'bg-brand-500/10 border-brand-500/40' : 'bg-slate-800 border-slate-700'}`}>
+                <div key={pkg.id} className={`rounded-xl p-4 border ${pkg.highlight ? 'bg-brand-500/10 border-brand-500/40' : 'bg-surface-raised border-border-subtle'}`}>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-slate-400 text-sm">{pkg.period}</span>
+                    <span className="text-text-muted text-sm">{pkg.period}</span>
                     {pkg.tag && (
                       <span className={`text-xs font-bold px-2 py-0.5 rounded ${pkg.highlight ? 'bg-brand-500 text-slate-900' : 'bg-blue-500/20 text-blue-400'}`}>{pkg.tag}</span>
                     )}
@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               href={`https://wa.me/6287748514337?text=${message}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-4 rounded-lg w-full text-center text-lg">
+              className="inline-block bg-accent-primary hover:bg-accent-hover text-white font-semibold px-6 py-4 rounded-lg w-full text-center text-lg">
               Sewa via WhatsApp
             </a>
           </div>
