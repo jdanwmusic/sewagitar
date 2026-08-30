@@ -1,4 +1,4 @@
-import { Inter, Fraunces, IBM_Plex_Mono } from 'next/font/google';
+import { Inter, Poppins, Playfair_Display, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -7,10 +7,17 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const playfair = Fraunces({
+const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-fraunces',
+  variable: '--font-playfair',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
 });
 
 const ibmMono = IBM_Plex_Mono({
@@ -54,7 +61,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${inter.variable} ${playfair.variable} ${ibmMono.variable} antialiased min-h-screen`}>
+      <body className={`${inter.variable} ${poppins.variable} ${playfair.variable} ${ibmMono.variable} antialiased min-h-screen bg-surface-base text-slate-900`}>
         {children}
       </body>
     </html>

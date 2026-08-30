@@ -2,41 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Batch 5 — Ocean Theme Global Styles ─── */
+
 :root {
-  --foreground-rgb: 245, 242, 236;      /* #F5F2EC warm-white */
-  --background-start-rgb: 14, 15, 18;     /* #0E0F12 surface-base */
-  --background-end-rgb: 7, 8, 10;        /* #07080A surface-deep */
+  /* Ocean palette exposed as CSS variables for reference */
+  --ocean-deep:   #0B3D5C;
+  --ocean-sea:    #1E6F9F;
+  --ocean-sky:   #6FB3D2;
+  --ocean-aqua:  #5AE6CF;
+  --sand:        #F5E6D3;
 }
 
 body {
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
-  color: rgb(var(--foreground-rgb));
   font-family: 'Inter', sans-serif;
+  background: #FFFFFF;
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fraunces', serif;         /* Batch 4 — Fraunces display */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   letter-spacing: -0.015em;
 }
 
-/* Batch 1 palette — button variants */
-.btn-primary {
-  @apply bg-accent-primary hover:bg-accent-hover text-action-text font-bold px-6 py-3 rounded-lg transition-all shadow-lg;
-}
-
-.btn-secondary {
-  @apply border-2 border-border-subtle hover:border-accent-primary text-white px-6 py-3 rounded-lg transition-all;
-}
-
-.btn-whatsapp {
-  @apply bg-accent-primary hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-lg transition-all shadow-lg;
+/* Display / section heading — Playfair for premium feel */
+.font-display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
 }
 
 /* Mono price / SKU */
-.font-price {
+.font-mono {
   font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ── Button System (Ocean) ─── */
+.btn-primary {
+  @apply bg-ocean-deep hover:bg-ocean-sea text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-btn;
+}
+
+.btn-secondary {
+  @apply border-2 border-ocean-deep hover:border-ocean-sea text-ocean-deep hover:text-ocean-sea px-6 py-3 rounded-xl transition-colors;
+}
+
+.btn-whatsapp {
+  @apply bg-ocean-deep hover:bg-ocean-sea text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-btn;
+}
+
+/* ── Card System (Light) ─── */
+.card {
+  @apply bg-white rounded-card border border-border-subtle shadow-card;
+}
+
+.card:hover {
+  @apply shadow-card-hover border-border-ocean;
+}
+
+/* ── Section Helpers ─── */
+.section-soft {
+  @apply bg-surface-soft;
+}
+
+.section-muted {
+  @apply bg-surface-muted;
+}
+
+.section-ocean {
+  @apply bg-surface-ocean text-white;
+}
+
+/* ── Wave Divider (SVG background) ─── */
+.wave-divider {
+  position: relative;
+}
+
+.wave-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23EEF4F8' d='M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
 }
