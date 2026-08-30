@@ -24,10 +24,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     : encodeURIComponent(`Halo SEWAGITAR.COM, saya ingin menyewa ${product.name}.`);
 
   return (
-    <div className="min-h-screen bg-surface-deep text-white">
-      <header className="bg-surface-raised border-b border-brand-600/30 sticky top-0 z-50">
+    <div className="min-h-screen bg-surface-base text-slate-900">
+      <header className="bg-white border-b border-border-subtle sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <a href="/gitar" className="text-text-secondary hover:text-white transition-colors">&larr; Kembali ke Katalog</a>
+          <a href="/gitar" className="text-ocean-deep hover:text-ocean-deep transition-colors">&larr; Kembali ke Katalog</a>
         </div>
       </header>
 
@@ -35,7 +35,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Product Image */}
           <div>
-            <div className="bg-surface-raised rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
+            <div className="bg-surface-soft rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
               <img
                 src={`/images/guitars/${product.image}`}
                 alt={`Gitar ${product.type} untuk disewa`}
@@ -46,30 +46,30 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           {/* Product Info */}
           <div>
-            <h1 className="font-heading text-4xl font-bold text-white mb-4">{product.name}</h1>
+            <h1 className="font-display text-4xl font-bold text-white mb-4">{product.name}</h1>
 
-            <div className="mb-6 inline-block bg-brand-500/20 text-brand-400 font-semibold px-3 py-1 rounded-full text-sm uppercase tracking-wide">
+            <div className="mb-6 inline-block bg-ocean-deep/8 text-ocean-deep font-semibold px-3 py-1 rounded-full text-sm uppercase tracking-wide">
               {product.type}
             </div>
 
             <h3 className="font-bold text-white text-lg mb-3">Deskripsi</h3>
-            <p className="text-text-muted leading-relaxed mb-6">{product.description}</p>
+            <p className="text-slate-500 leading-relaxed mb-6">{product.description}</p>
 
             <h3 className="font-bold text-white text-lg mb-4">Harga Sewa</h3>
             <div className="space-y-4 mb-8">
               {pricingPackages.map((pkg) => (
-                <div key={pkg.id} className={`rounded-xl p-4 border ${pkg.highlight ? 'bg-brand-500/10 border-brand-500/40' : 'bg-surface-raised border-border-subtle'}`}>
+                <div key={pkg.id} className={`rounded-xl p-4 border ${pkg.highlight ? 'bg-ocean-deep/5 border-ocean-deep/30' : 'bg-surface-soft border-border-subtle'}`}>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-text-muted text-sm">{pkg.period}</span>
+                    <span className="text-slate-500 text-sm">{pkg.period}</span>
                     {pkg.tag && (
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded ${pkg.highlight ? 'bg-brand-500 text-slate-900' : 'bg-blue-500/20 text-blue-400'}`}>{pkg.tag}</span>
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded ${pkg.highlight ? 'bg-brand-500 text-slate-900' : 'bg-ocean-sea/20 text-ocean-sea'}`}>{pkg.tag}</span>
                     )}
                   </div>
                   <div className="flex items-baseline justify-between">
-                    <div className="font-heading text-xl font-bold">
+                    <div className="font-display text-xl font-bold">
                       {pkg.title}
                     </div>
-                    <div className="text-brand-500 font-bold text-2xl">{formatRupiah(pkg.price)}</div>
+                    <div className="text-ocean-deep font-bold text-2xl">{formatRupiah(pkg.price)}</div>
                   </div>
                 </div>
               ))}
@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               href={`https://wa.me/6287748514337?text=${message}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-accent-primary hover:bg-accent-hover text-white font-semibold px-6 py-4 rounded-lg w-full text-center text-lg">
+              className="inline-block bg-ocean-deep hover:bg-ocean-deep/90 text-white font-semibold px-6 py-4 rounded-lg w-full text-center text-lg">
               Sewa via WhatsApp
             </a>
           </div>
