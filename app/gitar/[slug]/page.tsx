@@ -62,7 +62,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-slate-500 text-sm">{pkg.period}</span>
                     {pkg.tag && (
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded ${pkg.highlight ? 'bg-brand-500 text-slate-900' : 'bg-ocean-sea/20 text-ocean-sea'}`}>{pkg.tag}</span>
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded ${pkg.highlight ? 'bg-ocean-deep text-white' : 'bg-ocean-sea/20 text-ocean-sea'}`}>{pkg.tag}</span>
                     )}
                   </div>
                   <div className="flex items-baseline justify-between">
