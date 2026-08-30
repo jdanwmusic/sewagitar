@@ -16,9 +16,9 @@ export default {
           400: '#fbbf24',
           500: '#C9A86A',  /* Batch 1 — warm gold */
           600: '#B89458',  /* Batch 1 — warm gold */
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          700: '#A07D4F',  /* Batch 4 — warm gold deeper */
+          800: '#8A6E3E',  /* Batch 4 — warm gold deepest */
+          900: '#6E6030',  /* Batch 4 — warm gold darkest */
           surface: {
           base: '#0E0F12',
           raised: '#1A1B1F',
