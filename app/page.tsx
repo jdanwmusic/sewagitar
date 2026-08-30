@@ -191,11 +191,11 @@ export default function Home() {
                 key={product.id}
                 className="card group flex flex-col overflow-hidden"
               >
-                <div className="h-56 bg-surface-soft overflow-hidden">
+                <div className="min-h-[260px] sm:min-h-[300px] bg-surface-soft overflow-hidden relative">
                   <img
                     src={`/images/guitars/${product.image}`}
                     alt={`Gitar ${product.type} untuk disewa`}
-                    className="w-full h-full object-contain p-4 transition-transform group-hover:scale-105"
+                    className="w-full h-full object-contain transition-transform group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
