@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import products, { pricingPackages } from '../data/products';
 import FloatingWA from '../components/FloatingWA';
