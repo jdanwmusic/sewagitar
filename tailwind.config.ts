@@ -14,12 +14,28 @@ export default {
           200: '#fde68a',
           300: '#fcd34d',
           400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
+          500: '#C9A86A',  /* Batch 1 — warm gold */
+          600: '#B89458',  /* Batch 1 — warm gold */
           700: '#b45309',
           800: '#92400e',
           900: '#78350f',
-          slate: {
+          surface: {
+          base: '#0E0F12',
+          raised: '#1A1B1F',
+          deep: '#07080A',
+        },
+        accent: {
+          primary: '#C9A86A',
+          hover: '#D4B576',
+          tint: 'rgba(201,168,106,0.12)',
+        },
+        action: {
+          primary: '#D4B576',
+          text: '#0E0F12',
+        },
+        success: '#5A8A6A',
+        info: '#6B8FA8',
+        slate: {
             50: '#f8fafc',
             100: '#f1f5f9',
             200: '#e2e8f0',
@@ -35,8 +51,9 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
+        heading: ['Fraunces', 'serif'],
         body: ['Inter', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
       },
       spacing: {
         '18': '4.5rem',
