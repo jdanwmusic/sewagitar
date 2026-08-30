@@ -108,9 +108,9 @@ export default function Home() {
       </header>
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative bg-surface-base py-20 md:py-32 overflow-hidden">
+      <section className="relative bg-surface-base py-12 md:py-16 overflow-hidden">
         {/* Ocean wave SVG bg accent (right side) */}
-        <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none opacity-5" aria-hidden="true">
+        <div className="absolute right-0 top-0 w-1/3 h-full pointer-events-none opacity-[0.03]" aria-hidden="true">
           <svg viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
             <path d="M200 0 C300 100, 400 200, 350 300 C300 400, 200 500, 100 600 L0 600 L0 0 Z" fill="#0B3D5C"/>
             <path d="M250 50 C350 150, 450 250, 400 350 C350 450, 250 550, 150 650 L50 650 L50 50 Z" fill="#1E6F9F"/>
@@ -119,21 +119,24 @@ export default function Home() {
 
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           {/* Tagline pill */}
-          <div className="inline-flex items-center gap-2 bg-ocean-deep/5 border border-ocean-deep/15 rounded-full px-4 py-1.5 mb-8">
+          <div className="inline-flex items-center gap-2 bg-ocean-deep/8 border border-ocean-deep/10 rounded-full px-3 py-1 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-ocean-deep animate-pulse"></span>
-            <span className="text-xs font-medium text-ocean-deep">Layanan Cepat · Jakarta & Tangerang</span>
+            <span className="text-[11px] font-medium text-ocean-deep tracking-wide">Layanan Cepat · Jakarta & Tangerang</span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-6xl font-medium text-slate-900 mb-6 leading-tight">
+          <h1 className="font-display text-3xl md:text-5xl font-medium text-slate-900 mb-4 leading-[1.15]">
             Sewa Gitar<br />
             <span className="text-ocean-deep">yang Siap Pakai.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mb-10 leading-relaxed">
+          <p className="text-base md:text-lg text-slate-600 max-w-xl mb-3 leading-snug font-medium">
             Gitar elektrik, akustik, dan bass untuk rekaman, latihan, atau panggung. Siap pakai, terawat, dan langsung kirim.
           </p>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {["Elektrik • Akustik • Bass","Siap Pakai • Terawat • Siap Kirim"].map(t => (<span key={t} className="inline-block bg-ocean-deep/[0.06] text-ocean-deep text-xs font-medium px-2.5 py-0.5 rounded-full">{t}</span>))}
+          </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-2">
             <a
               href="/gitar"
               className="btn-primary text-center text-base"
@@ -156,17 +159,17 @@ export default function Home() {
       </section>
 
       {/* ── TRUST STATS ───────────────────────────────────── */}
-      <section className="bg-surface-soft py-12 border-y border-border-subtle">
+      <section className="bg-ocean-deep/[0.03] py-6 border-y border-ocean-deep/10">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="grid grid-cols-3 gap-6 text-center">
+          <div className="grid grid-cols-3 gap-3 text-center">
             {[
               { num: '3+', label: 'Kategori Instrumen' },
               { num: 'Jabodetabek', label: 'Area Layanan' },
               { num: 'Same-day', label: 'Pengiriman' },
             ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-2xl font-bold text-ocean-deep font-display mb-0.5">{stat.num}</div>
-                <div className="text-sm text-slate-500">{stat.label}</div>
+              <div key={stat.label} className="py-2">
+                <div className="text-xl font-display font-semibold text-ocean-deep">{stat.num}</div>
+                <div className="text-xs text-slate-500">{stat.label}</div>
               </div>
             ))}
           </div>
