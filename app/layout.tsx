@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Fraunces, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -7,10 +7,17 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const playfair = Playfair_Display({
+const playfair = Fraunces({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-playfair',
+  variable: '--font-fraunces',
+});
+
+const ibmMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500'],
+  variable: '--font-mono',
 });
 
 export const metadata = {
@@ -47,7 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${inter.variable} ${playfair.variable} antialiased min-h-screen`}>
+      <body className={`${inter.variable} ${playfair.variable} ${ibmMono.variable} antialiased min-h-screen`}>
         {children}
       </body>
     </html>
