@@ -177,9 +177,9 @@ export default function Home() {
       </section>
 
       {/* ── CATALOG PREVIEW ───────────────────────────────── */}
-      <section className="py-20 bg-surface-base">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
+      <section className="py-10 bg-ocean-deep/[0.03] rounded-32 px-4" style={{ border: '1px solid rgba(15,23,42,0.06)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
             <h2 className="font-display text-3xl md:text-4xl font-medium text-slate-900 mb-3">
               Pilihan Instrumen
             </h2>
