@@ -35,6 +35,26 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    id: 4,
+    slug: "parker-pm10",
+    name: "Parker PM10",
+    brand: "Parker",
+    model: "PM10",
+    instrumentType: "Elektrik",
+    category: "Gitar Elektrik",
+    description:
+      "Gitar elektrik Parker PM10 siap disewa untuk kebutuhan rekaman, latihan, atau panggung.",
+    image: "parker-pm10.jpg",
+    featured: true,
+    price24h: 100000,
+    seoTitle: "Sewa Gitar Elektrik Parker PM10 – Rental Gitar Jakarta & Tangerang | SEWAGITAR",
+    seoDescription:
+      "Sewa gitar elektrik Parker PM10 di Jakarta & Tangerang. Gitar elektrik siap pakai untuk kebutuhan musik Anda. Hubungi SEWAGITAR.COM.",
+    seoKeywords: ["sewa gitar elektrik", "parker pm10", "rental gitar elektrik", "sewa gitar parker"],
+    whatsappMessage: "Halo SEWAGITAR.COM, saya ingin menyewa gitar elektrik Parker PM10.",
+    relatedProductIds: [1, 2, 3],
+  },
+  {
     id: 1,
     slug: "gitar-elektrik",
     name: "Gitar Elektrik",
