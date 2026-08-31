@@ -198,7 +198,7 @@ export default function Home() {
                 <div className="min-h-[260px] sm:min-h-[300px] bg-surface-soft overflow-hidden relative">
                   <img
                     src={`/images/guitars/${product.image}`}
-                    alt={`Gitar ${product.type} untuk disewa`}
+                    alt={`${product.name} untuk disewa`}
                     className="w-full h-full object-contain transition-transform group-hover:scale-105"
                     loading="lazy"
                   />
@@ -206,7 +206,7 @@ export default function Home() {
 
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-semibold text-slate-900 text-lg mb-1">{product.name}</h3>
-                  <p className="text-ocean-sea text-xs font-medium uppercase tracking-wide mb-3">{product.type}</p>
+                  <p className="text-ocean-sea text-xs font-medium uppercase tracking-wide mb-3">{product.instrumentType}</p>
                   <p className="text-slate-500 text-sm mb-4 flex-1 leading-relaxed">{product.description}</p>
 
                   <div className="pt-4 border-t border-border-subtle flex items-center justify-between">
