@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Inter, Poppins, Playfair_Display, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -27,7 +28,7 @@ const ibmMono = IBM_Plex_Mono({
   variable: '--font-mono',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Sewa Gitar Jakarta & Tangerang | SEWAGITAR.COM',
   description: 'Sewa gitar elektrik, akustik, dan bass di Jakarta & Tangerang. Pilihan sewa 24 jam, mingguan, dan bulanan. Hubungi SEWAGITAR.COM melalui WhatsApp.',
   keywords: [
@@ -40,6 +41,10 @@ export const metadata = {
     'sewa gitar akustik',
     'sewa gitar bass'
   ],
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'Sewa Gitar Jakarta & Tangerang | SEWAGITAR.COM',
     description: 'Sewa gitar elektrik, akustik, dan bass di Jakarta & Tangerang. Pilihan sewa 24 jam, mingguan, dan bulanan.',
